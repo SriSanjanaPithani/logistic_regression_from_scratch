@@ -71,7 +71,77 @@ configuration before evaluating it on the test set.
 
 ## Running the Project
 
-Install the dependencies:
+### 1. Clone the repository
+
+```bash
+git clone <your-repository-url>
+cd <repository-name>
+```
+
+### 2. Create a virtual environment
+
+```bash
+python3 -m venv .venv
+```
+
+### 3. Activate the virtual environment
+
+**macOS / Linux:**
+
+```bash
+source .venv/bin/activate
+```
+
+**Windows (Command Prompt):**
+
+```cmd
+.venv\Scripts\activate
+```
+
+**Windows (PowerShell):**
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+### 4. Install the dependencies
 
 ```bash
 pip install -r requirements.txt
+```
+
+### 5. Verify the project structure
+
+Make sure the repository contains:
+
+```text
+project/
+├── data/
+│   ├── training.npz
+│   └── test.npz
+├── code/
+│   ├── main.py
+│   ├── DataReader.py
+│   ├── LogisticRegression.py
+│   └── SoftmaxRegression.py
+├── figures/
+├── requirements.txt
+└── README.md
+```
+
+### 6. Navigate to the code directory
+
+```bash
+cd code
+```
+
+### 7. Run the project
+
+```bash
+python main.py
+```
+
+The program loads the training and testing datasets, preprocesses the
+16×16 digit images, trains the binary and multiclass logistic regression
+models, evaluates their performance, and generates the project
+visualizations.
