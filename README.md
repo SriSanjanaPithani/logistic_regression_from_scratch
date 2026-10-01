@@ -40,6 +40,22 @@ sigmoid logistic regression.
 The model learns a linear decision boundary based on the symmetry and
 intensity features.
 
+### Binary Results
+
+The model was evaluated using learning rates of 0.05, 0.25, and 0.75
+and maximum iteration values of 50, 250, and 750. Mini-batch gradient
+descent with a batch size of 10 was used during hyperparameter tuning.
+
+The best configuration achieved:
+
+- Validation accuracy: **97.88%**
+- Test accuracy: **93.07%**
+- Learning rate: **0.25**
+- Maximum iterations: **750**
+- Batch size: **10**
+
+The selected model was evaluated on the test set without retraining.
+
 ## Multiclass Classification
 
 Softmax logistic regression extends the model to classify digits 0, 1,
@@ -49,6 +65,49 @@ and 2.
 
 Pairwise decision boundaries illustrate how the learned linear models
 separate the three digit classes.
+
+### Multiclass Results
+
+The same learning-rate and iteration search was performed using
+mini-batch gradient descent with a batch size of 10.
+
+The best configuration achieved:
+
+- Validation accuracy: **87.78%**
+- Test accuracy: **86.85%**
+- Learning rate: **0.25**
+- Maximum iterations: **250**
+- Batch size: **10**
+
+## Optimization Methods
+
+Three gradient-based optimization approaches were implemented and
+compared:
+
+- **Batch Gradient Descent (BGD):** updates the model weights once per
+  epoch using the average gradient across the training data.
+- **Mini-Batch Gradient Descent:** divides the training data into batches
+  and updates the weights after each batch.
+- **Stochastic Gradient Descent (SGD):** updates the weights after each
+  individual training sample.
+
+These implementations provide a comparison of different approaches to
+optimizing the same logistic regression models.
+
+## Sigmoid vs. Softmax
+
+The project also compares sigmoid and softmax logistic regression when
+classifying only two classes.
+
+When trained on the same binary dataset, both approaches achieved
+approximately:
+
+- Training accuracy: **97.19%**
+- Validation accuracy: **97.88%**
+
+This demonstrates that softmax logistic regression with two classes
+produces equivalent classification behavior to binary sigmoid logistic
+regression.
 
 ## Training Features
 
@@ -62,6 +121,15 @@ two-dimensional feature space.
 Models are evaluated across different learning rates and training
 iterations. Validation accuracy is used to select the best-performing
 configuration before evaluating it on the test set.
+
+The hyperparameter search evaluates:
+
+- Learning rates: **0.05, 0.25, 0.75**
+- Maximum iterations: **50, 250, 750**
+- Mini-batch size: **10**
+
+The best validation model is selected and then evaluated on the unseen
+test data without retraining.
 
 ## Technologies
 
@@ -142,6 +210,7 @@ python main.py
 ```
 
 The program loads the training and testing datasets, preprocesses the
-16×16 digit images, trains the binary and multiclass logistic regression
-models, evaluates their performance, and generates the project
-visualizations.
+16×16 digit images, extracts the symmetry and intensity features, trains
+the binary and multiclass logistic regression models, performs
+hyperparameter tuning, evaluates the selected models, and generates the
+project visualizations.
